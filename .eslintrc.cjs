@@ -23,9 +23,7 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-props-no-spreading": "off",
-    quotes: ["warn", "single"],
     indent: ["warn", 2],
-    "linebreak-style": ["error", "unix"],
     "no-unused-vars": "warn",
   },
 };
