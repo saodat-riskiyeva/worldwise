@@ -1,6 +1,30 @@
 {
   "cities": [
     {
+      "cityName": "Longwood",
+      "country": "USA",
+      "emoji": "us",
+      "date": "2025-02-12T09:24:11.863Z",
+      "notes": "Amazing 😃",
+      "position": {
+        "lat": 28.72575945405173,
+        "lng": -81.33774598557979
+      },
+      "id": 54646555
+    },
+    {
+      "cityName": "DeLand",
+      "country": "USA",
+      "emoji": "us",
+      "date": "2024-08-25T08:22:53.976Z",
+      "notes": "",
+      "position": {
+        "lat": 29.048107678431364,
+        "lng": -81.32217463455451
+      },
+      "id": 65651615
+    },
+    {
       "cityName": "Lisbon",
       "country": "Portugal",
       "emoji": "🇵🇹",
@@ -24,18 +48,7 @@
       },
       "id": 17806751
     },
-    {
-      "cityName": "Barcelona",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2014-08-25T08:22:53.976Z",
-      "notes": "",
-      "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
-      },
-      "id": 65651615
-    },
+
     {
       "cityName": "Berlin",
       "country": "Germany",
