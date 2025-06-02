@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useUrlPosition } from "../hooks/useUrlPosition";
 import styles from "./Form.module.css";
 import Button from "./Button";
-import Message from "./Message";
 import BackButton from "./BackButton";
+import Message from "./Message";
+import Spinner from "./Spinner";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -56,6 +57,8 @@ function Form() {
     },
     [lat, lng]
   );
+
+  if (isLoadingGeocoding) return <Spinner />;
 
   if (geoCodingError) return <Message message={geoCodingError} />;
 
