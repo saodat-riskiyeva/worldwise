@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useUrlPosition } from "../hooks/useUrlPosition";
 import styles from "./Form.module.css";
 import Button from "./Button";
+import Message from "./Message";
 import BackButton from "./BackButton";
 
 export function convertToEmoji(countryCode) {
@@ -22,21 +23,31 @@ function Form() {
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
+  const [geoCodingError, setGeoCodingError] = useState("");
+
+  const [emoji, setEmoji] = useState("");
 
   useEffect(
     function () {
       async function fetchCityData() {
         try {
           setIsLoadingGeocoding(true);
+          setGeoCodingError("");
+
           const res = await fetch(
             `${BASE_URL}?latitude=${lat}&longitude=${lng}&localityLanguage=en`
           );
           const data = await res.json();
 
+          if (!data.countryCode)
+            throw new Error(
+              "That doesn't seem to be a city. Click somewhere else"
+            );
           setCityName(data.city || data.locality || "");
           setCountry(data.countryName);
+          setEmoji(convertToEmoji(data.countryCode));
         } catch (err) {
-          //    throw new Error(err);
+          setGeoCodingError(err.message);
         } finally {
           setIsLoadingGeocoding(false);
         }
@@ -45,6 +56,8 @@ function Form() {
     },
     [lat, lng]
   );
+
+  if (geoCodingError) return <Message message={geoCodingError} />;
 
   return (
     <form className={styles.form}>
@@ -55,7 +68,7 @@ function Form() {
           onChange={(e) => setCityName(e.target.value)}
           value={cityName}
         />
-        {/* <span className={styles.flag}>{emoji}</span> */}
+        <span className={styles.flag}>{emoji}</span>
       </div>
 
       <div className={styles.row}>
